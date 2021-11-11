@@ -1,0 +1,18 @@
+MetaFileClass {
+ Name "{9332B24E2C336972}ToxicZone_Data/imagesets/tz_menulogo.edds"
+ Author "TheDmitri"
+ ChangeDate 645162595
+ Configurations {
+  TGAResourceClass PC {
+   SourceFile "TZ_menuLogo.tga"
+   FormatCompress Copy
+   TiledTexture 0
+  }
+  TGAResourceClass XBOX_ONE : PC {
+  }
+  TGAResourceClass PS4 : PC {
+  }
+  TGAResourceClass LINUX : PC {
+  }
+ }
+}
