@@ -1,0 +1,286 @@
+How to add crate or particles to a new custom toxiczone ?
+
+=> I recommend to use: DayZ Editor or Dayz Offline tools to place the crates and particles. You can export the coordonates and fill the config according to your work.
+=>You can also commission me to make you a custom config, based on the time taken to make it, I'll give you a reasonnable price ;)
+
+if you have any questions: =>Discord: https://discord.gg/gPkhE2w
+
+I spend a lot of effort on this, so feel free to donate if you support my work: https://www.paypal.me/thedmitri
+
+{
+    "IsToxicZoneActive": 1,                                 //Set to 0 to disable static toxiczone
+    "StaticToxicAreaLocation": [
+        {
+            "ToxicZoneStatut": "TZKamensk",                 //Name of your toxic zone
+            "X": 7890.0,			            //X coordonate of the center of the zone
+            "Y": 14697.0,				    //Y coordonate of the center of the zone (IN DAYZ IT'S THE THIRD VALUE, Y=Z, sorry for that, dayz is not logic about math )
+            "Radius": 300.0,				    //Radius of the zone
+            "X1": -1,				            //X coordonate of the 1rst corner of the zone - Don't use those unless you want a square toxic zone
+            "Y1": -1,					    //Y coordonate of the 1rst corner of the zone - Don't use those unless you want a square toxic zone
+            "X2": -1,					    //X coordonate of the 2nd corner of the zone - Don't use those unless you want a square toxic zone
+            "Y2": -1,					    //Y coordonate of the 2nd corner of the zone - Don't use those unless you want a square toxic zone
+            "IsSquareZone": 0,                              //Set to 1 to make this toxic zone square
+            "IsMsgActive": 1,			            //Set to 0 to disable toxic message
+            "MsgEnterZone": "YOU ARE IN A TOXIC AREA!",     //Msg when you get in
+            "MsgExitZone": "YOU LEFT THE TOXIC AREA!",      //Msg when you get out
+            "IsOnlyGasMask": 0,                             //Set it to 0 to disable the green smoke
+            "IsLootActive": 1,                              //Set it to 0 to disable loot case spawn in that toxiczone
+            "ContainerName": "ToxicCase",		   //You can change the container where you will find loot even if I don't see the point of changing it. ALSO NOW THE DESPAWN IS FORCED JUST BEFORE THE NEW RESPAWN OF THE CRATE. So don't let people keep the crate
+            "NumbCratePerTime": 1,		            //Number of crate that spawn every [TimerLoot] (cf LootConfigv4.json)
+            "MaxLoot": 8,			           //MaxLoot in crate
+            "ParticlesPosition": [
+                {
+                    "NName": "BlueSmoke",                  //Particle name : you've got :  GreenSmoke - RedSmoke - GreySmoke - GreenSmoke2 - PurpleSmoke - MustardSmoke - WhiteSmoke -BlueSmoke and also GreenSpore - RedSpore - GreySpore - GreenSpore - PurpleSpore - MustardSpore - WhiteSpore -BlueSpore
+                    "PPos": [
+                        8010.0,                             //X coordonate of the particle
+                        0.0,                                //Height, put 0 because I auto snap it to ground
+                        14625.0                             //Z coordonate of the particle
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        7794.0,
+                        0.0,
+                        14788.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        7871.0,
+                        0.0,
+                        14700.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        7691.0,
+                        0.0,
+                        14855.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        7904.0,
+                        0.0,
+                        14585.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        7814.0,
+                        0.0,
+                        14542.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        7766.0,
+                        0.0,
+                        14639.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        7725.0,
+                        0.0,
+                        14706.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        8019.0,
+                        0.0,
+                        14758.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        7644.0,
+                        0.0,
+                        14750.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        7910.0,
+                        0.0,
+                        14724.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        7916.0,
+                        0.0,
+                        14627.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        8115.0,
+                        0.0,
+                        14563.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        8161.0,
+                        0.0,
+                        14706.0
+                    ]
+                },
+                {
+                    "NName": "BlueSmoke",
+                    "PPos": [
+                        8003.0,
+                        0.0,
+                        14538.0
+                    ]
+                }
+            ],
+            "ToxicCratePosition": [
+                {
+                    "Name": "Army1",                     //crate loot name preset
+                    "POS": [				 //Position of the case
+                        8029.16015625,                   //X
+                        339.822998046875,                //Y
+                        14642.7998046875                 //Z
+                    ],
+                    "ORI": [				//Orientation of the case
+                        -90.0,				//RX
+                        0.0,				//RY
+                        0.0				//RZ
+                    ]
+                },
+                {
+                    "Name": "Army2",
+                    "POS": [
+                        8028.43017578125,
+                        339.822998046875,
+                        14642.7998046875
+                    ],
+                    "ORI": [
+                        -90.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                {
+                    "Name": "Army1",
+                    "POS": [
+                        7812.990234375,
+                        356.0119934082031,
+                        14783.900390625
+                    ],
+                    "ORI": [
+                        50.0,
+                        0.3868339955806732,
+                        1.1816099882125855
+                    ]
+                },
+                {
+                    "Name": "Army2",
+                    "POS": [
+                        7832.35009765625,
+                        357.1000061035156,
+                        14794.0
+                    ],
+                    "ORI": [
+                        -176.0,
+                        0.0,
+                        -9.0
+                    ]
+                },
+                {
+                    "Name": "Army1",
+                    "POS": [
+                        7895.68994140625,
+                        344.3999938964844,
+                        14680.599609375
+                    ],
+                    "ORI": [
+                        -150.0,
+                        3.2041900157928469,
+                        -9.829130172729493
+                    ]
+                },
+                {
+                    "Name": "Army2",
+                    "POS": [
+                        7903.2998046875,
+                        339.04998779296877,
+                        14637.400390625
+                    ],
+                    "ORI": [
+                        -80.0,
+                        6.0,
+                        0.0
+                    ]
+                },
+                {
+                    "Name": "Army1",
+                    "POS": [
+                        8040.2998046875,
+                        340.25201416015627,
+                        14611.2998046875
+                    ],
+                    "ORI": [
+                        145.0,
+                        -0.3653239905834198,
+                        1.1205400228500367
+                    ]
+                },
+                {
+                    "Name": "Army2",
+                    "POS": [
+                        7928.89990234375,
+                        340.4779968261719,
+                        14670.0
+                    ],
+                    "ORI": [
+                        21.534799575805665,
+                        0.4930559992790222,
+                        2.382460117340088
+                    ]
+                },
+                {
+                    "Name": "Army1",
+                    "POS": [
+                        8010.2001953125,
+                        340.2879943847656,
+                        14654.2001953125
+                    ],
+                    "ORI": [
+                        150.0,
+                        0.15395499765872956,
+                        -1.1748900413513184
+                    ]
+                }
+            ],
+            "CreatureList": [
+                {
+                    "CreatureName": "Animal_CanisLupus_Grey",   //Creature name that spawn around the crate
+                    "Max": 7,                                   //Max number of creature
+                    "ProbToSpawn": 0.0                          //Prob to spawn
+                },
+                {
+                    "CreatureName": "Animal_Dark_Bear",
+                    "Max": 1,
+                    "ProbToSpawn": 0.0
+                }
+            ]
+        }
+    ]
+}

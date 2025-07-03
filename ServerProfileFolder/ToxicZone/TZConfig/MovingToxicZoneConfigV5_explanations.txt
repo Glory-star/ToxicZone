@@ -1,0 +1,124 @@
+{
+    "IsMovingZoneActive": 1,
+    "MovingToxicAreaLocation": [
+        {
+            "MovingToxicZoneStatut": "GorkaToBogatyrka",
+            "IsMsgActive": 1,
+            "MsgEnterZone": "You're in a moving toxiczone !",
+            "MsgExitZone": "You're leaving a moving toxiczone !",
+            "StartX": 2000,											   
+            "StartY": 5000,											   
+            "EndX": 7442,											   
+            "EndY": 8330,											   
+            "Radius": 150,											   
+            "Coeff": 0.611907,										   
+            "YtoOrigin": 3776.19,									   
+            "Chance": 0.25,                                            						
+            "Speed": 30,											   
+            "Norme": 6379,											   
+            "IsOnlyGasMask": 1,										   
+            "ParticleName": "GreenSmokeLong"						   
+        }
+    ],
+    "AdminUID": [
+        "76561198047475641"
+    ]
+}
+
+=>IsMovingZoneActive:
+//Set to 0 to disable completely Moving Zone, set to 1 to activate them
+
+=>MovingToxicZoneStatut:
+//Name of the DynToxicZone
+
+=>MsgEnterZone:
+//Msg that appear when you enter that zone
+
+=>MsgExitZone:
+//Same for leaving
+
+=>StartX:
+//Starting point X
+
+=>StartY:
+//Starting point Y
+
+=>EndX:
+//Ending point X
+
+=>EndY:
+//Ending point Y
+
+=>Radius:
+//Radius of the moving zone
+
+=>Coeff:
+//Coeff to calcule : (EndY-StartY)/(EndX-StartX);
+
+=>YtoOrigin:
+//YtoOrigin to calcule: StartY-Coeff*StartX;
+
+=>Chance:
+//chance to appear at restart between 0 and 1.0, multiply by 100 to get pêrcentage, it means 0.25 = 25% and 1.0 = 100%
+
+=>Speed:
+//Every 60s, the zone move of 30m.
+
+=>Norme:
+//It is used to calculate the time to reset the moving zone
+
+=>IsOnlyGasMask:
+//Set to 1 to allow only gasmask
+//Set to 0 to disable gasmask
+
+=>ParticleName:
+//Particle name to get the smoke effect
+
+//How to Add more Moving toxic zone ?:
+
+{
+    "IsMovingZoneActive": 1,
+    "MovingToxicAreaLocation": [
+        {
+            "MovingToxicZoneStatut": "CustomMZ1",
+            "IsMsgActive": 1,
+            "MsgEnterZone": "You're in a moving toxiczone !",
+            "MsgExitZone": "You're leaving a moving toxiczone !",
+            "StartX": 10071.0,
+            "StartY": 8843.0,
+            "EndX": 1526.0,
+            "EndY": 8840.0,
+            "Radius": 170.0,
+            "Coeff": 0.00035099999513477087,
+            "YtoOrigin": 8839.0,
+            "Chance": 1.0,
+            "Speed": -30,
+            "Norme": 8545,
+            "NbSickGiven": 50,
+            "IsOnlyGasMask": 1,
+            "ParticleName": "WhiteSmokeLong"
+        },                                                    <============ don't forget that ","
+	{
+            "MovingToxicZoneStatut": "CustomMZ2",
+            "IsMsgActive": 1,
+            "MsgEnterZone": "You're in a moving toxiczone !",
+            "MsgExitZone": "You're leaving a moving toxiczone !",
+            "StartX": 10071.0,
+            "StartY": 8843.0,
+            "EndX": 1526.0,
+            "EndY": 8840.0,
+            "Radius": 170.0,
+            "Coeff": 0.00035099999513477087,
+            "YtoOrigin": 8839.0,
+            "Chance": 1.0,
+            "Speed": -30,
+            "Norme": 8545,
+            "NbSickGiven": 50,
+            "IsOnlyGasMask": 1,
+            "ParticleName": "WhiteSmokeLong"
+        }
+    ],
+    "AdminUID": [
+        "76561198047475641"
+    ]
+}

@@ -1,0 +1,32 @@
+
+
+
+THIS CATEGORY CAN BE ADD IN THE TRADER CONFIG IN THE TRADER OF YOUR CHOICE:
+
+
+<Category> ToxicZoneNBC
+		ToxicM18SmokeGrenade_Green,	*,		1500,		500
+		ToxicM18SmokeGrenade_Red,	*,		1500,		500
+		ToxicM18SmokeGrenade_Green,	*,		1500,		500
+		ToxicM18SmokeGrenade_Purple,	*,		1500,		500
+		ToxicM18SmokeGrenade_Yellow,	*,		1500,		500
+		ToxicM18SmokeGrenade_White,	*,		1500,		500
+		ToxicCure,			*,		1000,		300
+		ToxicZoneGP5GasMask_black,	*,		1000,		300	
+		ToxicZoneGP5GasMask_green,	*,		1000,		300	
+		ToxicZoneSuits_Hood_black,	*,		1000,		300
+		ToxicZoneSuits_Hood_green,	*,		1000,		300	
+		ToxicZoneSuits_Hood_yellow,	*,		1000,		300	
+		ToxicZoneSuits_Gloves_black,	*,		1000,		300
+		ToxicZoneSuits_Gloves_green,	*,		1000,		300	
+		ToxicZoneSuits_Gloves_yellow,   *,		1000,		300	
+		ToxicZoneSuits_Jacket_yellow,   *,		1000,		300
+		ToxicZoneSuits_Jacket_green,   *,		1000,		300	
+		ToxicZoneSuits_Jacket_black,	*,		1000,		300	
+		ToxicZoneSuits_Pants_yellow,	*,		1000,		300
+		ToxicZoneSuits_Pants_green,	*,		1000,		300	
+		ToxicZoneSuits_Pants_black,	*,		1000,		300	
+		ToxicZoneSuits_Boots_yellow,	*,		1000,		300
+		ToxicZoneSuits_Boots_green,	*,		1000,		300
+		ToxicZoneSuits_Boots_black,	*,		1000,		300
+		GP5GasMask_Filter,		*,		 500,           150	

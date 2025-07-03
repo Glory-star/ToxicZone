@@ -1,0 +1,106 @@
+/////////////////////////////EXPLANATIONS//////////////////////////////////////////
+
+With this file, you're now able to add new protective equipment as protection for the toxic zone.
+You can pretty much set it to do whatever you want like:
+-add slots example : Vest to add a "plate carrier renforced" to resist more longer in the toxiczone
+-add protective equipement that aren't compatible yet
+-remove slot that you don't want to use
+-remove vanilla protection if you want to set it with only the protection equipment of your choosing.
+
+By default, here is how it is set:
+
+In ClothesProtectionConfigV5, you have a variable called : RequiredProtection( = 6)
+this variable is VERY IMPORTANT, it defines how many point you need to be fully protected.
+
+So with RequiredProtection = 6, it means that all protective equipment must give me 6 points.
+By default, below, we see that :
+NBCHoodBase 	    = 1 +
+NBCJacketBase 	    = 1 +
+NBCGloves_ColorBase = 1 +
+NBCPantsBase        = 1 +
+NBCBootsBase        = 1 +
+and
+GP5GasMask          = 0
+
+So we have in total = 5 (shit ! ,you will say "we need 6 points and you only have 5 ! you are telling us shit Dmitri !)
+
+=>Well, yes and no. The GP5GasMask is equal to 0 because with the filter it's not giving protection by default. So if I add a filter to my GasMask in game
+then the Protection for the GasMask will be equal to 1. TADAA !!! we've got our 6 points.
+
+What is means is that if you do'nt want to use the filter or want to add gasmask that doesn't accept filter, you just need to add them in the list with a protection value
+set to 1.
+
+ex:
+
+{
+            "SlotName": "Mask",
+            "ListProtections": [
+		{	
+                    "ClotheName": "CustomGP5GasMask",
+                    "Protection": 1
+                },
+                {
+                    "ClotheName": "GP5GasMask",            //Always keep the vanilla one at the end of the list so if you want to change a specific protection that was already compatible but
+                    "Protection": 0                        //you want to change its value, then it must be checked first in script.
+                } 
+            ]
+}
+
+{
+    "TZListSlotProtection": [
+        {
+            "SlotName": "Mask",
+            "ListProtections": [
+                {
+                    "ClotheName": "GP5GasMask",
+                    "Protection": 0
+                }
+            ]
+        },
+        {
+            "SlotName": "Headgear",
+            "ListProtections": [
+                {
+                    "ClotheName": "NBCHoodBase",
+                    "Protection": 1
+                }
+            ]
+        },
+        {
+            "SlotName": "Body",
+            "ListProtections": [
+                {
+                    "ClotheName": "NBCJacketBase",
+                    "Protection": 1
+                }
+            ]
+        },
+        {
+            "SlotName": "Gloves",
+            "ListProtections": [
+                {
+                    "ClotheName": "NBCGloves_ColorBase",
+                    "Protection": 1
+                }
+            ]
+        },
+        {
+            "SlotName": "Legs",
+            "ListProtections": [
+                {
+                    "ClotheName": "NBCPantsBase",
+                    "Protection": 1
+                }
+            ]
+        },
+        {
+            "SlotName": "Feet",
+            "ListProtections": [
+                {
+                    "ClotheName": "NBCBootsBase",
+                    "Protection": 1
+                }
+            ]
+        }
+    ]
+}
