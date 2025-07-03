@@ -15,14 +15,14 @@ class TZMovingToxicZoneClient
 	private bool      IsLongParticle = false;
 	private int       ParticleID;
 
-	ref array<ref Particle> m_MovingParticles;
+	ref array<Particle> m_MovingParticles;
 
 	private ref MovingToxicZoneLocation DynTZ;
 
 	void TZMovingToxicZoneClient(MovingToxicZoneLocation dyntz, int delta_t)
 	{
 		GetTZLogger().LogInfo("TZMovingToxicZone - Started ! : ");
-		m_MovingParticles = new array<ref Particle>;
+		m_MovingParticles = new array<Particle>;
 
 		DynTZ=dyntz;
 		NbSickGiven = DynTZ.NbSickGiven;
@@ -33,6 +33,7 @@ class TZMovingToxicZoneClient
 		StartParticleEffect(delta_t);
 
 		HasStarted = true;
+		//GetGame().GetMission().MissionScript.Call( this, "CheckScheduler", null );
 		GetGame().GetMission().MissionScript.Call( this, "ZoneCheck", null );
 		GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(CheckScheduler, 60000, true);
 		GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(RestartDynTZ, RestartMZ*1000, true);

@@ -213,7 +213,7 @@ class TZToxicZoneClient
         {
             protection = GetTZClothesConfigClient().TZListSlotProtection.Get(i).ListProtections.Get(j).Protection;
             #ifdef TZDEBUG
-            GetTZLogger().LogInfo("GetProtectionLevel: protection"+slotname+ " - "+protection.ToString());
+            GetTZLogger().LogInfo("GetProtectionLevel: protection"+protection.ToString());
             #endif
             return protection;
         }

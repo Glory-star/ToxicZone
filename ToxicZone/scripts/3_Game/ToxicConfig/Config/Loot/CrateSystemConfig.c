@@ -116,7 +116,7 @@ class LootTZSettings{
 	}
 
 	static ref LootTZSettings Load()	{
-		LootTZSettings settings = new LootTZSettings();
+		ref LootTZSettings settings = new LootTZSettings();
 
 		if (FileExist(TZ_OLD_LOOT_CONFIG)) {
 			JsonFileLoader<LootTZSettings>.JsonLoadFile(TZ_OLD_LOOT_CONFIG, settings);

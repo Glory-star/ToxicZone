@@ -1,22 +1,4 @@
-class ToxicM18SmokeGrenade_ColorBase extends ToxicSmokeBase
-{
-	const string SOUND_SMOKE_START = "SmokegGrenades_M18_start_loop_SoundSet";
-	const string SOUND_SMOKE_LOOP = "SmokegGrenades_M18_active_loop_SoundSet";
-	const string SOUND_SMOKE_END = "SmokegGrenades_M18_end_loop_SoundSet";
-
-	void ToxicM18SmokeGrenade_ColorBase()
-	{
-		SetAmmoType("");
-		SetFuseDelay(2);
-		SetSoundSmokeStart(SOUND_SMOKE_START);
-		SetSoundSmokeLoop(SOUND_SMOKE_LOOP);
-		SetSoundSmokeEnd(SOUND_SMOKE_END);
-	}
-
-	void ~ToxicM18SmokeGrenade_ColorBase() {}
-}
-
-class ToxicM18SmokeGrenade_Red extends ToxicM18SmokeGrenade_ColorBase
+class ToxicM18SmokeGrenade_Red extends ToxicSmokeBase
 {
 	void ToxicM18SmokeGrenade_Red()
 	{
@@ -26,7 +8,7 @@ class ToxicM18SmokeGrenade_Red extends ToxicM18SmokeGrenade_ColorBase
 	}
 }
 
-class ToxicM18SmokeGrenade_Green extends ToxicM18SmokeGrenade_ColorBase
+class ToxicM18SmokeGrenade_Green extends ToxicSmokeBase
 {
 	void ToxicM18SmokeGrenade_Green()
 	{
@@ -36,7 +18,7 @@ class ToxicM18SmokeGrenade_Green extends ToxicM18SmokeGrenade_ColorBase
 	}
 }
 
-class ToxicM18SmokeGrenade_Purple extends ToxicM18SmokeGrenade_ColorBase
+class ToxicM18SmokeGrenade_Purple extends ToxicSmokeBase
 {
 	void ToxicM18SmokeGrenade_Purple()
 	{
@@ -46,7 +28,7 @@ class ToxicM18SmokeGrenade_Purple extends ToxicM18SmokeGrenade_ColorBase
 	}
 }
 
-class ToxicM18SmokeGrenade_Yellow extends ToxicM18SmokeGrenade_ColorBase
+class ToxicM18SmokeGrenade_Yellow extends ToxicSmokeBase
 {
 	void ToxicM18SmokeGrenade_Yellow()
 	{
@@ -56,7 +38,7 @@ class ToxicM18SmokeGrenade_Yellow extends ToxicM18SmokeGrenade_ColorBase
 	}
 }
 
-class ToxicM18SmokeGrenade_White extends ToxicM18SmokeGrenade_ColorBase
+class ToxicM18SmokeGrenade_White extends ToxicSmokeBase
 {
 	void ToxicM18SmokeGrenade_White()
 	{

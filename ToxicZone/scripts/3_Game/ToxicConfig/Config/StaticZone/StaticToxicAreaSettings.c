@@ -105,7 +105,7 @@ class StaticToxicAreaSettings
 		}
 		else
 		{
-			settings.StaticDefaultConfig()
+			settings.StaticDefaultConfig();
 		}
 
 		return settings;

@@ -1,7 +1,7 @@
 class TZToxicZoneServer
 {
   ref StaticToxicZoneLocationsClient m_ToxicLocations;
-  private ref array<ref House> m_Particle = new array<ref House>;
+  private ref array<House> m_Particle = new array<House>;
 
   void TZToxicZoneServer()
   {
@@ -60,7 +60,7 @@ class TZToxicZoneServer
   }
 
   //-----------------------------------RPC called on server-------------------------------------//
-  void GetToxicStatut(CallType type, ParamsReadContext ctx, PlayerIdentity sender, Object target)
+  void GetToxicStatut(CallType type, ref ParamsReadContext ctx, ref PlayerIdentity sender, ref Object target)
   {
    if (!GetGame().IsServer())
      return;
@@ -83,7 +83,7 @@ class TZToxicZoneServer
      #endif
   }
 
-  void GetSickQtyToGive(CallType type, ParamsReadContext ctx, PlayerIdentity sender, Object target)
+  void GetSickQtyToGive(CallType type, ref ParamsReadContext ctx, ref PlayerIdentity sender, ref Object target)
   {
    if (!GetGame().IsServer())
      return;

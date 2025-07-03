@@ -31,7 +31,7 @@ class GeneralToxicZoneSettings
 	}
 
 	static ref GeneralToxicZoneSettings Load()	{
-		GeneralToxicZoneSettings settings = new GeneralToxicZoneSettings();
+		ref GeneralToxicZoneSettings settings = new GeneralToxicZoneSettings();
 
 		if ( !FileExist( TZ_CONFIG_ROOT_SERVER ) )
 		{
