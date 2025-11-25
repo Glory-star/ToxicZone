@@ -82,6 +82,24 @@ class TZCrateSystem
 		}
 	}
 
+	// ------------------------------------------------------
+	//  ToxicZone: Fisher–Yates shuffle for loot list
+	//  Ensures fair randomization without affecting logic
+	// ------------------------------------------------------
+	void ShuffleToxicLoot(array<ref LootConfig> arr)
+	{
+		int count = arr.Count();
+		for (int i = count - 1; i > 0; i--)
+		{
+			int r = Math.RandomIntInclusive(0, i);
+
+			// swap arr[i] <-> arr[r]
+			LootConfig tmp = arr[i];
+			arr[i] = arr[r];
+			arr[r] = tmp;
+		}
+	}
+
 	void CreateEzDrop(int maxloot, string container_name,vector v, vector o, string name,int here)
 	{
 		int k,temp;
@@ -97,31 +115,46 @@ class TZCrateSystem
 				k=i;
 			}
 		}
-		for(int l=0;l<GetTZLootConfig().ListLoots.Get(k).Loots.Count();l++)
+		// ------------------------------------------------------
+		//  BUILD AND SHUFFLE LOOT LIST
+		// ------------------------------------------------------
+		ref array<ref LootConfig> shuffled = new array<ref LootConfig>;
+
+		for (int cp = 0; cp < GetTZLootConfig().ListLoots.Get(k).Loots.Count(); cp++)
 		{
-			if(temp>=maxloot && maxloot!=-1)continue;
-			if ( GetTZLootConfig().ListLoots.Get(k).Loots.Get(l).ProbToSpawn > Math.RandomFloatInclusive(0,1) )
+			shuffled.Insert(GetTZLootConfig().ListLoots.Get(k).Loots.Get(cp));
+		}
+		
+		ShuffleToxicLoot(shuffled); // FIX Randomizes the loot order to ensure that all items have an equal chance of spawning, since if the list is large, items at the bottom of the list will spawn less often or even never
+
+		// ------------------------------------------------------
+		//  PROCESS SHUFFLED LOOT LIST
+		// ------------------------------------------------------
+		for (int l = 0; l < shuffled.Count(); l++)
+		{
+			if (maxloot != -1 && temp >= maxloot) // Break avoids unnecessary checks once max loot is reached, improving performance.
+				break;
+
+			if (shuffled[l].ProbToSpawn > Math.RandomFloatInclusive(0, 1))
 			{
-				if (GetTZLootConfig().ListLoots.Get(k).Loots.Get(l).AttachmentsToLoot.Count() == 0)
+				if (shuffled[l].AttachmentsToLoot.Count() == 0)
 				{
-					m_Loot.GetInventory().CreateInInventory(GetTZLootConfig().ListLoots.Get(k).Loots.Get(l).LootName);
-					temp+=1;
-					GetTZLogger().LogInfo(GetTZLootConfig().ListLoots.Get(k).Loots.Get(l).LootName);
+					m_Loot.GetInventory().CreateInInventory(shuffled[l].LootName);
+					temp++;
+					GetTZLogger().LogInfo(shuffled[l].LootName);
 					continue;
 				}
-				else
+				m_Loot.GetInventory().CreateInInventory(shuffled[l].LootName);
+				temp++;
+				GetTZLogger().LogInfo(shuffled[l].LootName);
+
+				for (int parc = 0; parc < shuffled[l].AttachmentsToLoot.Count(); parc++)
 				{
-					m_Loot.GetInventory().CreateInInventory(GetTZLootConfig().ListLoots.Get(k).Loots.Get(l).LootName);
-					temp+=1;
-					GetTZLogger().LogInfo(GetTZLootConfig().ListLoots.Get(k).Loots.Get(l).LootName);
-					for( int parc=0; parc < GetTZLootConfig().ListLoots.Get(k).Loots.Get(l).AttachmentsToLoot.Count() ; parc++)
+					if (shuffled[l].AttachmentsToLoot.Get(parc).ProbAttachToSpawn > Math.RandomFloatInclusive(0, 1))
 					{
-						if ( GetTZLootConfig().ListLoots.Get(k).Loots.Get(l).AttachmentsToLoot.Get(parc).ProbAttachToSpawn > Math.RandomFloatInclusive(0,1) )
-						{
-							m_Loot.GetInventory().CreateInInventory(GetTZLootConfig().ListLoots.Get(k).Loots.Get(l).AttachmentsToLoot.Get(parc).AttachName);
-							temp+=1;
-							GetTZLogger().LogInfo(GetTZLootConfig().ListLoots.Get(k).Loots.Get(l).AttachmentsToLoot.Get(parc).AttachName);
-						}
+						m_Loot.GetInventory().CreateInInventory(shuffled[l].AttachmentsToLoot.Get(parc).AttachName);
+						temp++;
+						GetTZLogger().LogInfo(shuffled[l].AttachmentsToLoot.Get(parc).AttachName);
 					}
 				}
 			}
@@ -252,4 +285,5 @@ class TZCrateSystem
 		return Vector(pos[0], ground, pos[2]);
 	}
 }
+
 
