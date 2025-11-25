@@ -187,6 +187,20 @@ class TZCrateSystem
 
 	}
 
+	// BUG: This method incorrectly uses SurfaceY() for positioning, which only returns *terrain* height.
+	// It completely ignores buildings, floors, roofs, bridges or any object surfaces.
+	// As a result, entities spawned inside buildings fall through the floor or appear floating in the air.
+	//
+	// BUG: The original Y offset (pos[1]) is ADDED to the terrain height, causing massive elevation errors.
+	// Example: If a crate position has Y = 450 (building floor), the method does:
+	//     finalY = terrainY + 450
+	// This produces sky-high positions and creates "floating" spawns.
+	//
+	// In short:
+	//   - SurfaceY() = ground only → ignores real surfaces
+	//   - pos[1] added again → double height and sky spawns
+	//   - causes wolves and crates to spawn in the air or fall through buildings.
+	/*
 	private vector snapToGround(vector pos)
     {
         float pos_x = pos[0];
@@ -197,4 +211,45 @@ class TZCrateSystem
 
         return tmp_pos;
     }
+	*/
+
+	// FIXED VERSION:
+	// This improved snapToGround() uses a downward RaycastRV to detect the real surface
+	// (floor, roof, platform, bridge, object collision, etc.) instead of relying on SurfaceY()
+	// which only returns terrain height.
+	//
+	// RaycastRV provides accurate collision with any world geometry, allowing entities to spawn
+	// properly on interior floors and elevated structures without falling through or floating.
+	//
+	// Behavior:
+	//   1. Casts a ray slightly above the target position downwards.
+	//   2. If a collision is found (floor, roof, object surface), the hit position is returned.
+	//   3. If nothing is hit, falls back to terrain height via SurfaceY().
+	//
+	// Advantages:
+	//   - Correctly handles multi-floor buildings.
+	//   - Prevents "sky spawn" caused by wrong Y offsets.
+	//   - Prevents crates and creatures spawning inside geometry or below floors.
+	//   - Much more consistent and accurate than the old SurfaceY() method.
+	//
+	private vector snapToGround(vector pos)
+	{
+		vector from = pos + "0 1 0";     // start slightly above
+		vector to   = pos + "0 -5 0";    // cast downwards
+
+		vector hitPos;
+		vector hitNormal;
+		int comp;
+
+		// Raycast to detect actual geometry surface
+		if (DayZPhysics.RaycastRV(from, to, hitPos, hitNormal, comp))
+		{
+			return hitPos;
+		}
+
+		// Fallback for open terrain or failed raycast
+		float ground = GetGame().SurfaceY(pos[0], pos[2]);
+		return Vector(pos[0], ground, pos[2]);
+	}
 }
+
